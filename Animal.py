@@ -1,8 +1,6 @@
 import random
 
 
-# https://github.com/Eg012/tasks.git
-
 class Animal:
     def __init__(self, animal_weight, eat_norma):
         self.animal_weight = animal_weight
@@ -16,7 +14,7 @@ class Animal:
         return class_name(**random.choice(random_pool))
 
 
-class Carnivorous(Animal):#Сarnivorous
+class Carnivorous(Animal):  # Сarnivorous
     def __init__(self, animal_weight, eat_norma, nickname, food_type=None):
         super().__init__(animal_weight, eat_norma)
         self.food_type = "meat" if food_type is None else food_type
@@ -26,8 +24,6 @@ class Carnivorous(Animal):#Сarnivorous
     def __str__(self):
         return f'класс животного:{self.__class__.__name__}, имя животного:{random.choice(self.name)}, кличка:{self.nickname}, тип еды:{self.food_type}, количество еды:{self.eat_norma}'
 
-    def __gt__(self, other):
-        pass
 
     @staticmethod
     def random():
@@ -53,6 +49,9 @@ class Carnivorous(Animal):#Сarnivorous
         ]
         return Animal.random(Carnivorous, pool)
 
+    def __gt__(self, other):
+        return self.eat_norma > other.eat_norma
+
 
 class Omnivorous(Animal):
     def __init__(self, animal_weight, eat_norma, nickname, name, food_type=None):
@@ -65,9 +64,6 @@ class Omnivorous(Animal):
 
     def __str__(self):
         return f'класс животного:{self.__class__.__name__}, имя животного:{self.name}, кличка:{self.nickname}, тип еды:{self.food_type}, количество еды:{self.eat_norma}'
-
-    def __gt__(self, other):
-        pass
 
     @staticmethod
     def random():
@@ -93,6 +89,9 @@ class Omnivorous(Animal):
         ]
         return Animal.random(Omnivorous, pool)
 
+    def __gt__(self, other):
+        return self.eat_norma > other.eat_norma
+
 
 class Herbivorous(Animal):
     def __init__(self, animal_weight, eat_norma, nickname, name, food_type=None):
@@ -105,9 +104,6 @@ class Herbivorous(Animal):
 
     def __str__(self):
         return f'класс животного:{self.__class__.__name__}, имя животного:{self.name}, кличка:{self.nickname}, тип еды:{self.food_type}, количество еды:{self.eat_norma}'
-
-    def __gt__(self, other):
-        pass
 
     @staticmethod
     def random():
@@ -132,6 +128,9 @@ class Herbivorous(Animal):
             }
         ]
         return Animal.random(Herbivorous, pool)
+
+    def __gt__(self, other):
+        return self.eat_norma > other.eat_norma
 
 
 print(int(Carnivorous.random()))
