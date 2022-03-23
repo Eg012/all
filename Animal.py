@@ -136,7 +136,7 @@ class Herbivorous(Animal):
 print(int(Carnivorous.random()))
 print(int(Herbivorous.random()))
 print(int(Omnivorous.random()))
-
+#alfavit = []
 # animal_carnivorous = ['гепард', 'медведь', 'морж']
 #         animal_herbivorous = ['Жираф', 'пандa , 'зебра']
 #         animal_omnivorous = ['барсук', 'утка', 'кабан']
