@@ -2,9 +2,10 @@ import random
 
 
 class Animal:
-    def __init__(self, animal_weight, eat_norma):
+    def __init__(self, animal_weight, eat_norma, name):
         self.animal_weight = animal_weight
         self.eat_norma = eat_norma
+        self.name = name
 
     def __int__(self):
         return int(self.animal_weight * self.eat_norma)
@@ -13,12 +14,13 @@ class Animal:
     def random(class_name, random_pool):
         return class_name(**random.choice(random_pool))
 
+    def __gt__(self, other):
+        return int(self) > int(other) or (int(self) == int(other) and self.name[0] > other.name[0])
 
 class Carnivorous(Animal):  # Сarnivorous
-    def __init__(self, animal_weight, eat_norma, nickname, food_type=None):
-        super().__init__(animal_weight, eat_norma)
+    def __init__(self, animal_weight, eat_norma,name, nickname, food_type=None):
+        super().__init__(animal_weight, eat_norma, name)
         self.food_type = "meat" if food_type is None else food_type
-        self.name = ['гепард', 'медведь', 'морж']
         self.nickname = nickname
 
     def __str__(self):
