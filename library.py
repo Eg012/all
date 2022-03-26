@@ -40,12 +40,13 @@ class Home_library:
 
     # {"year": 2008, }
     def get(self, filters):
-         filters = [
-                    {
-                        "year": 2008,
-                        "author": 'Д.М.Глуховский',
-                        'number': 'number'
-                        'name' : 'Meтро 2033'
-                    },
+        pass
 
-                    ]
+
+h = Home_library([])
+
+h.get({
+    "year": 2008,
+    "author": 'Д.М.Глуховский',
+    'name': 'Meтро 2033'
+})
