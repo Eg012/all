@@ -6,47 +6,66 @@ class Book:
         self.author = author
 
     def __str__(self):
-        return f'название книги:{self.name},год издания:{self.year}, номер книги: {self.number},'
-
-    @staticmethod
-    def random():
-        books = ['Meтро 2033', 'Голос', 'Рыцари сорока островов']
-        author = ['Д.М.Глуховский', 'Д.Д.Сергеевна', 'С.В.Лукьяненко']
-        number = [1, 2, 3]
-        publishing = ['2005', '28 ноября 2016 г.']
-        return Book(name=books,
-                    author=author,
-                    number=number,
-                    year=publishing)
+        return f'название книги:{self.name},год издания:{self.year}, номер книги: {self.number}, автор книги:{self.author}'
 
 
-books = []
-for i in range(3):
-    books.append(Book.random())
-
-for i in sorted(books):
-    print(i)
-
-
-class Home_library:
+class HomeLibrary:
     def __init__(self, books):
         self.books = books
 
-    def add(self, book):
-        pass
-
     def remove(self, number):
-        pass
+        for book in self.books:
+            if book.number == number:
+                self.books.remove(book)
 
     # {"year": 2008, }
-    def get(self, filters):
-        pass
+    def get(self, filters=None):
+        if filters is None:
+            return self.books
+
+        books = []
+        for book in self.books:
+            for key in filters.keys():
+                if type(filters[key]) == list:
+                    if book.__dict__[key] in filters[key]:
+                        books.append(book)
+                        break
+                elif book.__dict__[key] == filters[key]:
+                    books.append(books)
+                    break
+        return books
+
+    def push(self, number, name, year, author):
+        self.books.append(
+            Book(number, name, year, author)
+        )
 
 
-h = Home_library([])
+h = HomeLibrary([
+    Book(name='Meтро 2033', author='Д.М.Глуховский', year=2005, number=1),
+    Book(name='Голос', author='Д.Д.Сергеевна', year=2016, number=2),
+    Book(name='С.В.Лукьяненко', author='Рыцари сорока островов', year=2006, number=3)
+])
+h.remove(3)
+a = h.get()
 
-h.get({
-    "year": 2008,
-    "author": 'Д.М.Глуховский',
-    'name': 'Meтро 2033'
+c = h.get({
+    "year": [2016],
+    "author": 'Д.Д.Сергеевна'
 })
+
+b = h.get({
+    "year": [2006],
+    "author": 'С.В.Лукьяненко'
+})
+
+
+def print_book(books):
+    for book in books:
+        print(book)
+
+h.push(name='Meтро 2033', author='Д.М.Глуховский', year=2005, number=10)
+
+print_book(a)
+print_book(b)
+print_book(c)
