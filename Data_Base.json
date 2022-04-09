@@ -1,0 +1,41 @@
+{
+  "users": [
+    {
+      "name": "Ivan",
+      "password": "123"
+    },
+    {
+      "name": "Ivan",
+      "password": "123"
+    },
+    {
+      "name": "Ivan",
+      "password": "123"
+    },
+    {
+      "name": "Ivan",
+      "password": "123"
+    },
+    {
+      "name": "Ivan1",
+      "password": "1232"
+    },
+    {
+      "name": "Ivan1",
+      "password": "1232"
+    },
+    {
+      "name": "Ivan1",
+      "password": "1232"
+    },
+    {
+      "name": "Ivan1",
+      "password": "1232"
+    }
+  ],
+  "tokens": [
+    {
+      "id": "10"
+    }
+  ]
+}
